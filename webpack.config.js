@@ -2,11 +2,10 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const loader = require('mini-css-extract-plugin/types/loader');
 
 
 module.exports = {
-    entry: { main: './src/index.js' },
+    entry: { main: './src/scripts/index.js' },
     output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'main.js',
@@ -21,6 +20,10 @@ module.exports = {
     },
     module: {
         rules: [
+            {
+                test: /\.html$/i,
+                loader: "html-loader",
+            },
             {
                 test: /\.js$/,
                 use: 'babel-loader',
